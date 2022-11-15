@@ -6,7 +6,7 @@
 Use git to clone the repository:
 
 ```bash
-git clone https://github.com/unica-isde/flask-classification-2021-projects-H
+git clone https://github.com/unica-isde/flask-classification-2022-projects-BASE
 ```
 
 And install the requirements with 
@@ -42,17 +42,3 @@ script. The worker will process jobs stored in the queue.
 In order for the queue to work, you should have `redis`  
 installed and running (specify port in `config.py`). 
 
-### Run inside Docker 
-
-To run the service with docker, we will use docker-compose:
-
-```bash
-docker-compose build
-docker-compose up
-```
-
-You can run multiple workers with:
-
-```bash 
-docker-compose up --scale worker=2
-```
