@@ -75,7 +75,7 @@ function processImage(inImg) {
         ctx.closePath();
         ctx.stroke();
     }
-  }
+}
   
 function getImageData(image_id) {
     const canvas = document.createElement("canvas");
