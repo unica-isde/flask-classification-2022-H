@@ -1,6 +1,7 @@
 import redis
 from rq import Connection, Queue
 
+from flask import jsonify
 from app import app
 from config import Configuration
 
@@ -22,3 +23,8 @@ def classifications_id(job_id):
         'data': task.result,
     }
     return response
+
+@app.route("/downloadJSON/<string:job_id>", methods=['GET'])
+def downloadJSON(job_id):
+    data = classifications_id(job_id)['data']
+    return (data)
