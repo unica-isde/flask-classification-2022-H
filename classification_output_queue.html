@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        .large-front-thumbnail {
+            position: relative;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .dwd{
+            border-color: black;
+            width: 50%;
+        }
+
+    </style>
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <img class="large-front-thumbnail"
+                     src="{{ url_for('static', filename='imagenet_subset/'+image_id) }} "
+                     alt={{ image_id }}/>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="row">
+                    <canvas id="classificationOutput" style="max-width: 500px;"></canvas>
+                    <div class="align-items-center">
+                        <h2 id="waitText"></h2>
+                        <div class="m-5 spinner spinner-border mr-auto spinner-grow text-dark row" id="spinner">
+                        </div>
+                    </div>
+                </div>
+                <a class="btn btn-dark" href="/classifications" role="button">Back</a>
+            </div>
+        </div>
+
+        
+        <!-- Download buttons -->
+        <div class="w-100"></div>
+        <div class="col"></div>
+        
+        <div class="w-100"></div>
+        <div class="col"></div>
+        <div class="col"> 
+            <div class="row justify-content-end">
+               <!--<a class="btn dwd btn-dark" href="/downloadJSON/jobID" role="button" download="flask-classification-results.json">Download results</a>--> 
+               <a class="btn dwd btn-dark" href={{url_for("downloadJSON", job_id=jobID) }} role="button" download="flask-classification-results.json">Download results</a>
+            </div>  
+            <br>
+            <div class="row justify-content-end">
+                <a class="btn dwd btn-dark" href="/downloadPNG" role="button">Download plot</a>
+            </div>   
+            
+            
+        </div>
+        
+    </div>
+    <script src="{{ url_for("static", filename="poll.js") }}" id="polling" jobid={{ jobID }}></script>
+
+{% endblock %}
