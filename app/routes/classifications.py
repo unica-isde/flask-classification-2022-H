@@ -40,10 +40,10 @@ def classifications():
     return render_template('classification_select.html', form=form)
 
 
-@app.route("/downloadPNG")
-def downloadPNG():
-    return Response(
-        request.form.get("classificationOutput"),
-        mimetype="image/png",
-        headers={"Content-disposition":
-                 "attachment; filename=flask-classification-plot.png"})
+#@app.route("/downloadPNG")
+#def downloadPNG():
+  #  return Response(
+ #       request.form.get("classificationOutput"),
+   #     mimetype="image/png",
+     #   headers={"Content-disposition":
+    #             "attachment; filename=flask-classification-plot.png"})
