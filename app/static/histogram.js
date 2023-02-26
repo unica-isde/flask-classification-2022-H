@@ -8,15 +8,15 @@ function processImage(inImg) {
     let histG = new Array(256).fill(0);
     let histB = new Array(256).fill(0);
     for (let i = 0; i < src.length; i++) {
-      let r = src[i] & 0xFF;
-      let g = (src[i] >> 8) & 0xFF;
-      let b = (src[i] >> 16) & 0xFF;
-      histBrightness[r]++;
-      histBrightness[g]++;
-      histBrightness[b]++;
-      histR[r]++;
-      histG[g]++;
-      histB[b]++;
+        let r = src[i] & 0xFF;
+        let g = (src[i] >> 8) & 0xFF;
+        let b = (src[i] >> 16) & 0xFF;
+        histBrightness[r]++;
+        histBrightness[g]++;
+        histBrightness[b]++;
+        histR[r]++;
+        histG[g]++;
+        histB[b]++;
     }
   
     let maxBrightness = 0;
