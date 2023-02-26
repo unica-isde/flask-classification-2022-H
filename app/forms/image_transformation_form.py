@@ -11,5 +11,5 @@ conf = Configuration()
 class ImageTransformationForm(FlaskForm):
     image = SelectField('image', choices=list_images(), validators=[DataRequired()])
     transformation = SelectField('transformation', choices=transformations, validators=[DataRequired()])
-    transformation_value = DecimalField(default=1, places=2, rounding=None, use_locale=False, number_format=None, validators=[DataRequired()])
+    transformation_value = DecimalField(default=1, places=2, rounding=None, use_locale=False, number_format=None, validators=[])
     submit = SubmitField('Submit')
