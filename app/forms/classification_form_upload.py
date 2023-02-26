@@ -7,7 +7,7 @@ from config import Configuration
 conf = Configuration()
 
 
-class ClassificationFormNew(FlaskForm):
+class ClassificationFormUpload(FlaskForm):
     model = SelectField('model', choices=conf.models, validators=[DataRequired()])
     image = FileField('image', validators=[DataRequired()])
     submit = SubmitField('Submit')

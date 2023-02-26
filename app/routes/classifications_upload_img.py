@@ -4,7 +4,7 @@ from rq import Connection, Queue
 from rq.job import Job
 
 from app import app
-from app.forms.classification_form_new import ClassificationFormNew
+from app.forms.classification_form_upload import ClassificationFormUpload
 from ml.classification_utils import classify_image
 from config import Configuration
 
@@ -15,12 +15,12 @@ from werkzeug.utils import secure_filename
 
 config = Configuration()
 
-@app.route('/classifications_new', methods=['GET', 'POST'])
+@app.route('/classifications_upload', methods=['GET', 'POST'])
 def classificationsNew():
     """API for selecting a model and uploading an image, then running a 
     classification job. Returns the output scores from the 
     model."""
-    form = ClassificationFormNew()
+    form = ClassificationFormUpload()
     
     if form.validate_on_submit():  # POST
     
@@ -46,11 +46,11 @@ def classificationsNew():
 
             # returns the image classification output from the specified model
             # return render_template('classification_output.html', image_id=image_id, results=result_dict)
-            return render_template("classification_output_queue.html", image_id=image_id, jobID=task.get_id())
+            return render_template("classification_output_queue_upload.html", image_id=image_id, jobID=task.get_id())
 
     # otherwise, it is a get request and should return the
     # image and model selector
-    return render_template('classification_select_new.html', form=form)
+    return render_template('classification_select_upload.html', form=form)
 
 
 UPLOAD_FOLDER = Configuration.image_folder_path
