@@ -9,7 +9,7 @@ from ml.classification_utils import classify_image
 from config import Configuration
 
 import os
-from flask import Flask, flash, request, redirect, url_for
+from flask import Flask, request
 from werkzeug.utils import secure_filename
 
 
@@ -26,6 +26,7 @@ def classificationsNew():
     
         f = request.files.get('image')
         
+        #check if there is a file and if it is an allowed one
         if f and allowed_file(f.filename):
             filename = secure_filename(f.filename)
             f.save(os.path.join(UPLOAD_FOLDER,filename))
@@ -52,7 +53,7 @@ def classificationsNew():
     return render_template('classification_select_new.html', form=form)
 
 
-UPLOAD_FOLDER = '/home/alberto/Desktop/ISDe/flask-classification-2022-H/app/static/imagenet_subset'
+UPLOAD_FOLDER = Configuration.image_folder_path
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
