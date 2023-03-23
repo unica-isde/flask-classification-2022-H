@@ -8,7 +8,7 @@ def histogram():
     """API for selecting an image and return its histogram"""
     form = HistogramForm()
     if form.validate_on_submit():  # POST
-        image_id = form.image.data
+        image_id = form.image.data # chosen image from the form
         
         # returns the histogram of a specified image 
         return render_template("histogram_output.html", image_id=image_id)
