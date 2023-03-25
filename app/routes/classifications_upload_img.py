@@ -23,11 +23,14 @@ def classificationsNew():
     form = ClassificationFormUpload()
     
     if form.validate_on_submit():  # POST
-    
+        #retrieve the uploaded image from the form
+        #(note that it must contains enctype="multipart/form-data)
         f = request.files.get('image')
         
         #check if there is a file and if it is an allowed one
         if f and allowed_file(f.filename):
+            #check the name before save the file into upload folder,
+            #to prevent unwanted characters
             filename = secure_filename(f.filename)
             f.save(os.path.join(UPLOAD_FOLDER,filename))
             
@@ -48,8 +51,8 @@ def classificationsNew():
             # return render_template('classification_output.html', image_id=image_id, results=result_dict)
             return render_template("classification_output_queue_upload.html", image_id=image_id, jobID=task.get_id())
 
-    # otherwise, it is a get request and should return the
-    # image and model selector
+    # otherwise, either it is a get request or a void/invalid file is submitted
+    # it should return the image upload box and model selector
     return render_template('classification_select_upload.html', form=form)
 
 
@@ -60,6 +63,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
+    #simply returns the filename extension and check if it's an image one
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
