@@ -1,5 +1,5 @@
 import redis
-from flask import render_template, send_file, Response, request
+from flask import render_template
 from rq import Connection, Queue
 from rq.job import Job
 
@@ -38,12 +38,3 @@ def classifications():
     # otherwise, it is a get request and should return the
     # image and model selector
     return render_template('classification_select.html', form=form)
-
-
-#@app.route("/downloadPNG")
-#def downloadPNG():
-  #  return Response(
- #       request.form.get("classificationOutput"),
-   #     mimetype="image/png",
-     #   headers={"Content-disposition":
-    #             "attachment; filename=flask-classification-plot.png"})
