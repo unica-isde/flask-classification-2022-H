@@ -10,3 +10,4 @@ def downloadJSON(job_id):
     json = {element[0]: element[1] for element in data} #dictionary that iterates over each item in the 'data' list and extracts the first element 
                                                         #element[0] as the key and element[1] as the value
     return json
+    

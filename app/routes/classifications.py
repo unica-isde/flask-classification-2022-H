@@ -38,3 +38,4 @@ def classifications():
     # otherwise, it is a get request and should return the
     # image and model selector
     return render_template('classification_select.html', form=form)
+    
