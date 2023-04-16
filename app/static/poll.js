@@ -79,6 +79,12 @@ function makeGraph(results) {
                         beginAtZero: true
                     }
                 }]
+            },
+            animation: {
+                onComplete: function(){ 
+                    document.getElementById("dwd-png").href = myChart.toBase64Image(); //When the chart is ready, convert the chart to baseimage
+                    document.getElementById("dwd-png").download = 'chart_results.png'; //Download the chart in form of png from the download button
+                }
             }
         }
     });
