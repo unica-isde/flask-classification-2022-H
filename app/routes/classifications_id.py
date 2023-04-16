@@ -22,4 +22,3 @@ def classifications_id(job_id):
         'data': task.result,
     }
     return response
-    
