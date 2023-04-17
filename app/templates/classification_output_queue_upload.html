@@ -10,13 +10,8 @@
             margin: 0 auto;
         }
 
-        .dwd{
-            border-color: black;
-            width: 50%;
-        }
 
     </style>
-
     <div class="row">
         <div class="col">
             <div class="card">
@@ -35,30 +30,15 @@
                         </div>
                     </div>
                 </div>
-                <a class="btn btn-dark" href="/classifications" role="button">Back</a>
+
+
+                <a class="btn btn-dark" href="/classifications_upload" role="button">Back</a>
             </div>
         </div>
-
-        
-        <!-- Download buttons -->
-        <div class="w-100"></div>
-        <div class="col"></div>
-        
-        <div class="w-100"></div>
-        <div class="col"></div>
-        <div class="col"> 
-            <div class="row justify-content-end">
-               <a class="btn dwd btn-dark" href={{url_for("downloadJSON", job_id=jobID) }} role="button" download="flask-classification-results.json">Download results</a>
-            </div>  
-            <br>
-            <div class="row justify-content-end">
-                <a class="btn dwd btn-dark" id = "dwd-png" role="button">Download plot</a>
-            </div>   
-            
-            
-        </div>
-        
     </div>
     <script src="{{ url_for("static", filename="poll.js") }}" id="polling" jobid={{ jobID }}></script>
 
 {% endblock %}
+
+
+
