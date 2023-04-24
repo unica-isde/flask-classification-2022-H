@@ -47,8 +47,6 @@ def classificationsNew():
                 })
                 task = q.enqueue_job(job)
 
-            # returns the image classification output from the specified model
-            # return render_template('classification_output.html', image_id=image_id, results=result_dict)
             return render_template("classification_output_queue_upload.html", image_id=image_id, jobID=task.get_id())
 
     # otherwise, either it is a get request or a void/invalid file is submitted
